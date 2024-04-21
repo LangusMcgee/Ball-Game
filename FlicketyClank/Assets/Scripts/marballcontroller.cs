@@ -31,11 +31,11 @@ public class marballcontroller : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(cam.transform.forward * torque_amount * Time.deltaTime);
+            rb.AddTorque(cam.transform.forward * torque_amount * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(-cam.transform.forward * torque_amount * Time.deltaTime);
+            rb.AddTorque(-cam.transform.forward * torque_amount * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && is_jumping == false)

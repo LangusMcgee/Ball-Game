@@ -17,6 +17,5 @@ public class Boostoncollide : MonoBehaviour
         other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * forceval * Time.deltaTime);
         Debug.Log("Trigger Entered");
         //other.Addforce(-cam.transform.forward * torque_amount * Time.deltaTime);
-        
     }
 }
