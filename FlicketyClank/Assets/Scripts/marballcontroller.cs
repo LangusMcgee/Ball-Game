@@ -8,8 +8,8 @@ public class marballcontroller : MonoBehaviour
 {
     Rigidbody rb;
     public Camera cam;
-    public float torque_amount = 500;
-    public float jump_force = 50000;
+    public float torque_amount = 500f;
+    public float jump_force = 50000f;
     public bool is_jumping;
     // Start is called before the first frame update
     void Start()

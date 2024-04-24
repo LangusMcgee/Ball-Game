@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class playerlives : MonoBehaviour
 {
-    public int health;
-    public int numOfHearts;
+    public int health = 1;
 
-    public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public GameObject gameOverScreen;
+    public bool gameOver;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,29 +20,14 @@ public class playerlives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // checks hp every frame and adjusts ui accordingly
-        for (int i = 0; i < hearts.Length; i++)
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            if (health > numOfHearts)
-            {
-                health = numOfHearts;
-            }   
-            if (i < health)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHeart;
-            }
-            if (i < numOfHearts)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
+            health--;
+        }
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            gameOverScreen.SetActive(true);
         }
     }
 }
