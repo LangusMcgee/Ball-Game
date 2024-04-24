@@ -8,7 +8,8 @@ public class marballcontroller : MonoBehaviour
 {
     Rigidbody rb;
     public Camera cam;
-    public float torque_amount = 500f;
+    public float force_amount = 250f;
+    private int top_speed = 15;
     public float jump_force = 50000f;
     public bool is_jumping;
     // Start is called before the first frame update
@@ -21,23 +22,34 @@ public class marballcontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.W) && is_jumping == false)
         {
-            rb.AddForce(cam.transform.right * torque_amount * Time.deltaTime);
+            rb.AddForce(cam.transform.forward * force_amount * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.S) && is_jumping == false)
         {
-            rb.AddForce(-cam.transform.right * torque_amount * Time.deltaTime);
+            rb.AddForce(-cam.transform.forward * force_amount * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.D) && is_jumping == false)
         {
-            rb.AddForce(cam.transform.forward * torque_amount * Time.deltaTime);
+            rb.AddForce(cam.transform.right * force_amount * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.A) && is_jumping == false)
         {
-            rb.AddForce(-cam.transform.forward * torque_amount * Time.deltaTime);
+            rb.AddForce(-cam.transform.right * force_amount * Time.deltaTime);
         }
 
+        Vector2 tmpXZ = new Vector2(rb.velocity.x, rb.velocity.z);
+        if (tmpXZ.magnitude > top_speed)
+        {
+            Debug.Log("top speed breached");
+            tmpXZ = tmpXZ.normalized * top_speed;
+            rb.velocity = new Vector3(tmpXZ.x, rb.velocity.y, tmpXZ.y);
+        }
+    }
+
+    void FixedUpdate()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && is_jumping == false)
         {
             is_jumping = true;

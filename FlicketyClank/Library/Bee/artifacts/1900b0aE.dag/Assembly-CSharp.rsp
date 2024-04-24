@@ -365,7 +365,7 @@
 "Assets/Scripts/ObjectScripts/Boostoncollide.cs"
 "Assets/Scripts/ObjectScripts/marballcontroller.cs"
 "Assets/Scripts/Points/CollectableRings.cs"
-"Assets/Scripts/Points/PointsDisplay.cs"
+"Assets/Scripts/Points/RingsDisplay.cs"
 -langversion:9.0
 
 /deterministic

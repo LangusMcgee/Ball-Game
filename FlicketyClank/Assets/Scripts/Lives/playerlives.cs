@@ -8,8 +8,7 @@ public class playerlives : MonoBehaviour
 {
     public int health = 3;
 
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
+    public CollectableRings collectableRings;
     public GameObject gameOverScreen;
     public Rigidbody rb;
 
@@ -31,9 +30,10 @@ public class playerlives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha8))
+        if (collectableRings.rings >= 10)
         {
-            health--;
+            health++;
+            collectableRings.rings = 0;
         }
         if (health <= 0)
         {
