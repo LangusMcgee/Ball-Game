@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - ring
   - DamageZone
+  - Win
   layers:
   - Default
   - TransparentFX

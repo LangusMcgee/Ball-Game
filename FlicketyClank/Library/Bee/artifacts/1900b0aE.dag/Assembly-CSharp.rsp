@@ -362,12 +362,13 @@
 "Assets/Scripts/GameEvents/RestartGame.cs"
 "Assets/Scripts/Lives/LivesDisplay.cs"
 "Assets/Scripts/Lives/playerlives.cs"
+"Assets/Scripts/ObjectScripts/Animatebooster.cs"
 "Assets/Scripts/ObjectScripts/Boostoncollide.cs"
 "Assets/Scripts/ObjectScripts/marballcontroller.cs"
+"Assets/Scripts/ObjectScripts/Teleport.cs"
 "Assets/Scripts/Points/CollectableRings.cs"
 "Assets/Scripts/Points/LevelsPassed.cs"
 "Assets/Scripts/Points/RingsDisplay.cs"
-"Assets/Scripts/Teleport.cs"
 -langversion:9.0
 
 /deterministic
