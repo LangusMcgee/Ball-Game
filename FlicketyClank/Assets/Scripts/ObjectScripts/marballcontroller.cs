@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class marballcontroller : MonoBehaviour
@@ -9,9 +10,10 @@ public class marballcontroller : MonoBehaviour
     Rigidbody rb;
     public Camera cam;
     public float force_amount = 250f;
-    private int top_speed = 15;
     public float jump_force = 50000f;
     public bool is_jumping;
+    private int top_speed = 15;
+    public int teleports = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class marballcontroller : MonoBehaviour
             rb.AddForce(-cam.transform.right * force_amount * Time.deltaTime);
         }
 
+
         Vector2 tmpXZ = new Vector2(rb.velocity.x, rb.velocity.z);
         if (tmpXZ.magnitude > top_speed)
         {
@@ -46,10 +49,7 @@ public class marballcontroller : MonoBehaviour
             tmpXZ = tmpXZ.normalized * top_speed;
             rb.velocity = new Vector3(tmpXZ.x, rb.velocity.y, tmpXZ.y);
         }
-    }
 
-    void FixedUpdate()
-    {
         if (Input.GetKeyDown(KeyCode.Space) && is_jumping == false)
         {
             is_jumping = true;
