@@ -10,6 +10,7 @@ public class playerlives : MonoBehaviour
 
     public CollectableRings collectableRings;
     public GameObject gameOverScreen;
+    public GameObject RespawnPoint;
     public Rigidbody rb;
 
     public bool gameOver;
@@ -21,8 +22,9 @@ public class playerlives : MonoBehaviour
             Debug.Log("damage player");
 
             health--;
+            collectableRings.rings -= 2;
             rb.isKinematic = true;
-            gameObject.transform.position = Vector3.zero;
+            gameObject.transform.position = RespawnPoint.transform.position;
             rb.isKinematic = false;
         }
     }
@@ -30,7 +32,7 @@ public class playerlives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (collectableRings.rings >= 10)
+        if (collectableRings.rings >= 5)
         {
             health++;
             collectableRings.rings = 0;

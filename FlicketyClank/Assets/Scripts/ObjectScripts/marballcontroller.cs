@@ -27,28 +27,26 @@ public class marballcontroller : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && is_jumping == false)
         {
             rb.AddForce(cam.transform.forward * force_amount * Time.deltaTime);
+            capspeed();
         }
         if (Input.GetKey(KeyCode.S) && is_jumping == false)
         {
             rb.AddForce(-cam.transform.forward * force_amount * Time.deltaTime);
+            capspeed();
         }
         if (Input.GetKey(KeyCode.D) && is_jumping == false)
         {
             rb.AddForce(cam.transform.right * force_amount * Time.deltaTime);
+            capspeed();
         }
         if (Input.GetKey(KeyCode.A) && is_jumping == false)
         {
             rb.AddForce(-cam.transform.right * force_amount * Time.deltaTime);
+            capspeed();
         }
 
 
-        Vector2 tmpXZ = new Vector2(rb.velocity.x, rb.velocity.z);
-        if (tmpXZ.magnitude > top_speed)
-        {
-            Debug.Log("top speed breached");
-            tmpXZ = tmpXZ.normalized * top_speed;
-            rb.velocity = new Vector3(tmpXZ.x, rb.velocity.y, tmpXZ.y);
-        }
+
 
         if (Input.GetKeyDown(KeyCode.Space) && is_jumping == false)
         {
@@ -60,5 +58,15 @@ public class marballcontroller : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         is_jumping = false;
+    }
+    void capspeed()
+    {
+        Vector2 tmpXZ = new Vector2(rb.velocity.x, rb.velocity.z);
+        if (tmpXZ.magnitude > top_speed)
+        {
+            Debug.Log("top speed breached");
+            tmpXZ = tmpXZ.normalized * top_speed;
+            rb.velocity = new Vector3(tmpXZ.x, rb.velocity.y, tmpXZ.y);
+        }
     }
 }
